@@ -107,8 +107,9 @@
     </build>
 
     <scm>
-        <url>https://github.com/ulfhaga/LiquidConfig.git</url>
-        <connection>scm:git:git:github.com/ulfhaga/LiquidConfig.git</connection>
+        <url>scm:git:https://github.com/ulfhaga/LiquidConfig.git</url>
+        <connection>scm:git:git://github.com/ulfhaga/LiquidConfig.git</connection>
         <developerConnection>scm:git:git@github.com:ulfhaga/LiquidConfig.git</developerConnection>
+        
     </scm>
 </project>
