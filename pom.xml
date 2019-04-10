@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>liquid-configure</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.adtoox.com</url>
 
     <properties>
@@ -73,6 +72,7 @@
         </pluginManagement>
 
         <plugins>
+            <!-- Create buildnumber -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
@@ -90,7 +90,7 @@
                     <doUpdate>false</doUpdate>
                 </configuration>
             </plugin>
-
+            <!-- Insert buildnumber in the manifest file-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -107,8 +107,6 @@
                     </archive>
                 </configuration>
             </plugin>
-
-
         </plugins>
 
     </build>
