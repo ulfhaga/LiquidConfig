@@ -74,16 +74,6 @@
 
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
-                    </archive>
-                </configuration>
-            </plugin>
-
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
                 <version>1.4</version>
@@ -97,7 +87,7 @@
                 </executions>
                 <configuration>
                     <doCheck>false</doCheck>
-                    <doUpdate>true</doUpdate>
+                    <doUpdate>false</doUpdate>
                 </configuration>
             </plugin>
 
@@ -107,6 +97,7 @@
                 <version>2.1</version>
                 <configuration>
                     <archive>
+                        <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
@@ -126,6 +117,5 @@
         <url>scm:git:https://github.com/ulfhaga/LiquidConfig.git</url>
         <connection>scm:git:git://github.com/ulfhaga/LiquidConfig.git</connection>
         <developerConnection>scm:git:git@github.com:ulfhaga/LiquidConfig.git</developerConnection>
-
     </scm>
 </project>
