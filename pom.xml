@@ -7,9 +7,17 @@
     <groupId>com.adtoox.tools</groupId>
     <artifactId>liquid-configure</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>deb</packaging>
 
     <name>liquid-configure</name>
     <url>http://www.adtoox.com</url>
+
+    <developers>
+        <developer>
+            <name>online</name>
+            <email>online@adtoox.com</email>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -132,6 +140,31 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>io.solit.maven</groupId>
+                <artifactId>deb-maven-plugin</artifactId>
+                <version>1.0-RC2</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <copyOriginalChangelog>false</copyOriginalChangelog>
+                    <convertToDebianChangelog>true</convertToDebianChangelog>
+                    <appendCurrentVersionChangeSet>true</appendCurrentVersionChangeSet>
+                    <version>${project.version}</version>
+                    <revision>1</revision>
+                    <changelogSource>${project.basedir}/changelog.md</changelogSource>
+                    <upstreamChangelogSource>${project.basedir}/changelog.md</upstreamChangelogSource>
+                    <changelogDestinationDirectory></changelogDestinationDirectory>
+                    <stageDir>${project.build.directory}/deb</stageDir>
+                    <packageName>${project.artifactId}</packageName>
+                    <maintainer>${project.developers[0].name}</maintainer>
+                    <maintainerEmail>${project.developers[0].email}</maintainerEmail>
+                    <targetDistribution>stable</targetDistribution>
+                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                    <dataSourceDir>${project.basedir}/src/deb/data</dataSourceDir>
+                    <autoPermissions>true</autoPermissions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
