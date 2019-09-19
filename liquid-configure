@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar /usr/share/doc/liguidconfig/liquid-configure-1.0-SNAPSHOT-shaded.jar

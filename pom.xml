@@ -7,7 +7,7 @@
     <groupId>com.adtoox.tools</groupId>
     <artifactId>liquid-configure</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>deb</packaging>
+    <packaging>jar</packaging>
 
     <name>liquid-configure</name>
     <url>http://www.adtoox.com</url>
@@ -143,28 +143,92 @@
             </plugin>
 
             <plugin>
-                <groupId>io.solit.maven</groupId>
-                <artifactId>deb-maven-plugin</artifactId>
-                <version>1.0-RC2</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <copyOriginalChangelog>false</copyOriginalChangelog>
-                    <convertToDebianChangelog>true</convertToDebianChangelog>
-                    <appendCurrentVersionChangeSet>true</appendCurrentVersionChangeSet>
-                    <version>${project.version}</version>
-                    <revision>1</revision>
-                    <changelogSource>${project.basedir}/changelog.md</changelogSource>
-                    <upstreamChangelogSource>${project.basedir}/changelog.md</upstreamChangelogSource>
-                    <changelogDestinationDirectory></changelogDestinationDirectory>
-                    <stageDir>${project.build.directory}/deb</stageDir>
-                    <packageName>${project.artifactId}</packageName>
-                    <maintainer>${project.developers[0].name}</maintainer>
-                    <maintainerEmail>${project.developers[0].email}</maintainerEmail>
-                    <targetDistribution>stable</targetDistribution>
-                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
-                    <dataSourceDir>${project.basedir}/src/deb/data</dataSourceDir>
-                    <autoPermissions>true</autoPermissions>
-                </configuration>
+                <groupId>net.sourceforge.javadpkg</groupId>
+                <artifactId>dpkg-maven-plugin</artifactId>
+                <version>1.0.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>dpkg</goal>
+                        </goals>
+                        <configuration>
+                            <control>
+                                <name>liguidconfig</name>
+                                <version>1.0.0</version>
+                                <architecture>all</architecture>
+                                <section>devel</section>
+                                <priority>optional</priority>
+                                <depends>
+                                </depends>
+                                <recommends>
+                                </recommends>
+                                <suggests>
+                                </suggests>
+                                <enhances>
+                                </enhances>
+                                <preDepends>
+                                </preDepends>
+                                <breaks>
+                                </breaks>
+                                <conflicts>
+                                </conflicts>
+                                <provides>
+                                </provides>
+                                <replaces>
+                                </replaces>
+                                <builtUsing>
+                                </builtUsing>
+                                <maintainer><![CDATA[My Name <myname@gmail.com>]]></maintainer>
+                                <homepage>http://dn.se</homepage>
+                                <description>Just a test</description>
+                            </control>
+
+                            <copyright>
+                                <upstreamName>liquidconfig</upstreamName>
+                                <upstreamContact>liquidconfig</upstreamContact>
+                                <source>http://sourceforge.net/projects/gentoo/files/</source>
+                                <disclaimer>DISCLAIMER</disclaimer>
+                                <comment>No comment</comment>
+                                <license>
+                                    <name>MIT</name>
+                                    <text>TEXT</text>
+                                </license>
+                                <copyright>__NO_COPYRIGHT_NOR_LICENSE__</copyright>
+                            </copyright>
+
+                            <data>
+                                <entries>
+                                    <entry>
+                                        <sourcePath>target/liquid-configure-1.0-SNAPSHOT-shaded.jar</sourcePath>
+                                        <targetPath>/usr/local/share/liquid-configure/liquid-configure-1.0-SNAPSHOT-shaded.jar</targetPath>
+                                    </entry>
+                                    <entry>
+                                        <sourcePath>liquid-configure</sourcePath>
+                                        <targetPath>/usr/bin/liquid-configure</targetPath>
+                                    </entry>
+                                </entries>
+                            </data>
+
+                            <changeLog>
+                                <entries>
+                                    <entry>
+                                        <name>myname</name>
+                                        <version>1.0.0</version>
+                                        <distributions>
+                                            <distribution>unstable</distribution>
+                                        </distributions>
+                                        <urgency>low</urgency>
+                                        <details>
+                                            <detail>DETAIL</detail>
+                                        </details>
+                                        <maintainer><![CDATA[My Name <myname@gmail.com>]]></maintainer>
+                                        <date>Fri, 13 Sep 2019 19:56:29 +0200</date>
+                                    </entry>
+                                </entries>
+                            </changeLog>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
